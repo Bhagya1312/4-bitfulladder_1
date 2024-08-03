@@ -1,0 +1,30 @@
+Fulladd vlsi
+`timescale 1ns/1ns
+// Testbench
+
+module test;
+	reg Cin, x, y;
+	wire s, Cout;
+
+	fulladd uut(Cin, x, y, s, Cout);
+
+  	initial 
+    begin
+      $dumpfile("dump.vcd"); $dumpvars;
+      $display("| Cin | x | y || s | Cout |");
+    end
+  
+	initial 
+    begin
+		Cin = 0; x = 0; y = 0; #1 $display("|  %0h  | %0h | %0h || %0h |   %0h  |",Cin, x, y, s, Cout);  
+		Cin = 0; x = 0; y = 1; #1 $display("|  %0h  | %0h | %0h || %0h |   %0h  |",Cin, x, y, s, Cout);  
+		Cin = 0; x = 1; y = 0; #1 $display("|  %0h  | %0h | %0h || %0h |   %0h  |",Cin, x, y, s, Cout);  
+		Cin = 0; x = 1; y = 1; #1 $display("|  %0h  | %0h | %0h || %0h |   %0h  |",Cin, x, y, s, Cout);  
+		Cin = 1; x = 0; y = 0; #1 $display("|  %0h  | %0h | %0h || %0h |   %0h  |",Cin, x, y, s, Cout);  
+		Cin = 1; x = 0; y = 1; #1 $display("|  %0h  | %0h | %0h || %0h |   %0h  |",Cin, x, y, s, Cout);  
+		Cin = 1; x = 1; y = 0; #1 $display("|  %0h  | %0h | %0h || %0h |   %0h  |",Cin, x, y, s, Cout);  
+		Cin = 1; x = 1; y = 1; #1 $display("|  %0h  | %0h | %0h || %0h |   %0h  |",Cin, x, y, s, Cout);  
+        $finish;
+    end;
+  
+endmodule
